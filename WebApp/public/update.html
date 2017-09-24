@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WorkForce++</title>
+  <link rel="stylesheet" type="text/css" href="dialog-polyfill.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <dialog id="loginDialog" class="mdl-dialog">
+    <h2 class="mdl-dialog__title">Sign In</h2>
+    <div class="mdl-dialog__content">
+      <p id="loginError"></p>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="email" id="loginEmail">
+        <label class="mdl-textfield__label" for="sample3">Email</label>
+        <span class="mdl-textfield__error">Input is not a valid email address!</span>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="loginPassword">
+        <label class="mdl-textfield__label" for="sample3">Password </label>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <!-- Colored raised button -->
+      <button id="loginBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+        Sign In
+      </button>
+      <!-- MDL Spinner Component -->
+      <div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+    </div>
+  </dialog>
+
+  <!--Login-->
+  <div class="login-cover">
+    <!-- MDL Spinner Component -->
+  <div class="page-loader mdl-spinner mdl-js-spinner is-active"></div>
+  </div>
+
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">WorkForce++ | Update Employees</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="add.html">Add Employee</a>
+          <a class="mdl-navigation__link" href="update.html">Update Employee</a>
+          <a class="mdl-navigation__link" href="remove.html">Remove Employee</a>
+          <!-- Colored raised button -->
+          <button id="signOutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+            Sign Out <i class="material-icons">supervisor_account</i>
+          </button>
+
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">WorkForce++</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="add.html">Add Employee</a>
+        <a class="mdl-navigation__link" href="update.html">Update Employee</a>
+        <a class="mdl-navigation__link" href="remove.html">Remove Employee</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content"><!-- Your content goes here -->
+
+        <table id="removeTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="table_body"></tbody>
+        </table>
+
+        <dialog id="updateDialog" class="mdl-dialog">
+          <h2 class="mdl-dialog__title">Update</h2>
+          <div class="mdl-dialog__content">
+            <p id="updateError"></p>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="uId" placeholder="Employee ID">
+              <label class="mdl-textfield__label" for="sample3">Employee ID</label>
+              <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="uEn" placeholder="Employee Name">
+              <label class="mdl-textfield__label" for="sample3">Employee Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="email" id="uEe" placeholder="Employee Email">
+              <label class="mdl-textfield__label" for="sample3">Employee Email</label>
+              <span class="mdl-textfield__error">Input is not a valid email address!</span>
+            </div>
+
+          </div>
+          <div class="mdl-dialog__actions">
+            <p id="updateSuccess"></p>
+            <!-- Colored raised button -->
+            <button id="updateBtn" class="updateBtn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+              Update
+            </button>
+            <!-- MDL Spinner Component -->
+            <div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+          </div>
+        </dialog>
+
+      </div>
+    </main>
+  </div>
+
+  <!--Scripts-->
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+  <script src="firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="update.js"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
